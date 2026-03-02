@@ -3,326 +3,284 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Demo interactiva - Recomendador</title>
+  <title>Demo interactiva – estilo diapositivas</title>
+
   <style>
     :root{
-      --bg:#0b1220; --card:#111a2e; --text:#eaf0ff; --muted:#a9b6d6;
-      --accent:#4da3ff; --accent2:#7cffc2; --danger:#ff5f6d;
-      --shadow: 0 12px 30px rgba(0,0,0,.35);
-      --radius: 18px;
-      --max: 980px;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --bg:#0b1220;
+      --shadow:0 14px 34px rgba(0,0,0,.35);
+      --r:18px;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
     }
-    body{ margin:0; background: radial-gradient(1200px 600px at 20% 0%, #1b2a4a 0%, var(--bg) 55%);
-      color:var(--text); min-height:100vh; display:flex; justify-content:center; padding:24px; }
-    .wrap{ width:100%; max-width:var(--max); }
-    header{
-      display:flex; gap:14px; align-items:center; justify-content:space-between;
-      margin-bottom:16px;
-    }
-    .brand{
-      display:flex; gap:12px; align-items:center;
-    }
-    .logo{
-      width:44px; height:44px; border-radius:12px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: var(--shadow);
-    }
-    h1{ font-size:22px; margin:0; letter-spacing:.2px; }
-    .sub{ color:var(--muted); font-size:13px; margin-top:3px; }
-    .top-actions{ display:flex; gap:10px; align-items:center; }
-    button, .btn{
-      border:0; cursor:pointer; border-radius:14px; padding:12px 14px; font-weight:700;
-      color:var(--text); background: rgba(255,255,255,.08); box-shadow: 0 8px 18px rgba(0,0,0,.22);
-      transition: transform .08s ease, background .15s ease;
-    }
-    button:hover{ transform: translateY(-1px); background: rgba(255,255,255,.12); }
-    button.primary{ background: linear-gradient(135deg, var(--accent), #6bb8ff); color:#061022; }
-    button.primary:hover{ background: linear-gradient(135deg, #6bb8ff, var(--accent)); }
-    button.ghost{ background: transparent; border:1px solid rgba(255,255,255,.14); box-shadow:none; }
-    button.danger{ background: linear-gradient(135deg, var(--danger), #ff9a7a); color:#2b0b0f; }
-    .card{
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding:18px;
-    }
-    .step-title{ font-size:18px; margin:0 0 6px; }
-    .step-desc{ margin:0 0 16px; color:var(--muted); font-size:14px; line-height:1.35; }
+    body{margin:0;background:var(--bg);display:flex;justify-content:center;padding:18px}
+    .wrap{width:100%;max-width:1200px}
 
-    .grid{ display:grid; gap:12px; }
-    .grid.two{ grid-template-columns: repeat(2, minmax(0,1fr)); }
-    .grid.three{ grid-template-columns: repeat(3, minmax(0,1fr)); }
-    @media (max-width:720px){ .grid.two, .grid.three{ grid-template-columns: 1fr; } }
+    header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px;color:#eef3ff}
+    .title{display:flex;gap:12px;align-items:center}
+    .dotlogo{width:38px;height:38px;border-radius:14px;background:linear-gradient(135deg,#4da3ff,#7cffc2);box-shadow:var(--shadow)}
+    h1{margin:0;font-size:18px}
+    .sub{margin:4px 0 0;color:#c4d0ee;font-size:12px}
 
-    .choice{
-      text-align:left; padding:16px; border-radius:16px;
-      background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
-      display:flex; gap:12px; align-items:flex-start;
+    button{
+      border:0;cursor:pointer;border-radius:14px;padding:10px 14px;font-weight:800;color:#eef3ff;
+      background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.14);box-shadow:0 10px 22px rgba(0,0,0,.22)
     }
-    .icon{
-      width:38px; height:38px; border-radius:12px;
-      background: rgba(255,255,255,.10);
-      display:flex; align-items:center; justify-content:center;
-      font-size:18px;
-    }
-    .choice h3{ margin:0; font-size:15px; }
-    .choice p{ margin:6px 0 0; color:var(--muted); font-size:13px; line-height:1.3; }
-    .pillrow{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
-    .pill{
-      font-size:12px; padding:6px 10px; border-radius:999px;
-      background: rgba(77,163,255,.16); border: 1px solid rgba(77,163,255,.25);
-      color:#cfe6ff;
-    }
+    button.primary{background:linear-gradient(135deg,#4da3ff,#6bb8ff);color:#061022;border-color:transparent}
+    button.danger{background:linear-gradient(135deg,#ff5f6d,#ff9a7a);color:#2b0b0f;border-color:transparent}
+    button.ghost{background:transparent;border:1px solid rgba(255,255,255,.18);box-shadow:none}
 
-    .progress{
-      display:flex; gap:8px; margin:12px 0 18px;
-    }
-    .dot{
-      height:8px; flex:1; border-radius:999px; background: rgba(255,255,255,.10);
-      border:1px solid rgba(255,255,255,.10);
-    }
-    .dot.on{ background: linear-gradient(90deg, var(--accent), var(--accent2)); border-color: transparent; }
+    .progress{display:flex;gap:8px;margin:12px 0}
+    .p{height:8px;flex:1;border-radius:999px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.10)}
+    .p.on{background:linear-gradient(90deg,#4da3ff,#7cffc2);border-color:transparent}
 
-    .result-grid{ display:grid; gap:12px; grid-template-columns: 1.3fr .7fr; }
-    @media (max-width:900px){ .result-grid{ grid-template-columns:1fr; } }
-    .prod{
-      padding:14px; border-radius:16px; background: rgba(255,255,255,.06);
+    .stage{
+      border-radius:var(--r);
+      overflow:hidden;
       border:1px solid rgba(255,255,255,.12);
-      display:flex; gap:12px;
+      box-shadow:var(--shadow);
+      background:#101a30;
     }
-    .thumb{
-      width:64px; height:64px; border-radius:14px;
-      background: linear-gradient(135deg, rgba(77,163,255,.5), rgba(124,255,194,.35));
-      border:1px solid rgba(255,255,255,.12);
-      flex: 0 0 auto;
-    }
-    .prod h4{ margin:0; font-size:14px; }
-    .prod small{ color:var(--muted); display:block; margin-top:4px; }
-    .price{ margin-left:auto; font-weight:900; }
-    .why li{ margin:8px 0; color:var(--muted); }
-    .footer-note{ color:var(--muted); font-size:12px; margin-top:10px; }
 
-    .hidden{ display:none !important; }
-    .row{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; }
-    .linklike{ color:#bfe1ff; text-decoration:underline; cursor:pointer; }
-    input[type="text"]{
-      width:100%; padding:12px 12px; border-radius:14px; border:1px solid rgba(255,255,255,.15);
-      background: rgba(0,0,0,.18); color:var(--text);
+    .slide{display:none}
+    .slide.active{display:block}
+
+    .slideLayout{
+      padding: 26px 18px 28px;
+      background: #ffffff;
+      color: #111;
+      min-height: 68vh;
+      box-sizing: border-box;
     }
-    label{ font-size:13px; color:var(--muted); }
+
+    .slideTitle{
+      margin: 0 0 16px;
+      text-align: center;
+      font-size: 48px;
+      font-weight: 400;
+      letter-spacing: .2px;
+    }
+
+    .imgGrid2{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 46px;
+      align-items: center;
+      justify-items: center;
+      padding: 0 20px 10px;
+    }
+
+    .imgChoice{
+      border:0;
+      padding:0;
+      background: transparent;
+      cursor:pointer;
+      border-radius: 10px;
+    }
+    .imgChoice img{
+      width: min(420px, 40vw);
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 10px 26px rgba(0,0,0,.18);
+      display:block;
+      transition: transform .12s ease;
+    }
+    .imgChoice:hover img{ transform: translateY(-2px); }
+
+    .hotbar{
+      margin-top: 16px;
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .resultBox{
+      max-width: 980px;
+      margin: 0 auto;
+      background: #f7f8fb;
+      border: 1px solid rgba(0,0,0,.10);
+      border-radius: 14px;
+      padding: 14px;
+      box-sizing: border-box;
+    }
+    .muted{color:#5a6473;font-size:13px;line-height:1.45}
+    code{background:rgba(0,0,0,.06);padding:2px 6px;border-radius:10px}
+
+    @media (max-width: 900px){
+      .slideTitle{ font-size: 34px; }
+      .imgGrid2{ grid-template-columns: 1fr; gap: 18px; }
+      .imgChoice img{ width: min(520px, 90vw); }
+    }
   </style>
 </head>
 
 <body>
   <div class="wrap">
     <header>
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+      <div class="title">
+        <div class="dotlogo"></div>
         <div>
-          <h1>Demo interactiva – Recomendador de productos</h1>
-          <div class="sub">Los asistentes eligen y el sistema recomienda en tiempo real.</div>
+          <h1>Demo interactiva (look &amp; feel de diapositivas)</h1>
+          <div class="sub">Selección → recomendación (antes/después) con tus imágenes reales.</div>
         </div>
       </div>
-
-      <div class="top-actions">
-        <button class="ghost" id="btnShare">Copiar link con selección</button>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+        <button class="ghost" id="btnShare">Copiar link</button>
         <button class="danger" id="btnReset">Reiniciar</button>
       </div>
     </header>
 
-    <div class="card">
-      <div class="progress" aria-label="Progreso">
-        <div class="dot" id="dot1"></div>
-        <div class="dot" id="dot2"></div>
-        <div class="dot" id="dot3"></div>
-        <div class="dot" id="dot4"></div>
-        <div class="dot" id="dot5"></div>
-      </div>
+    <div class="progress" aria-label="Progreso">
+      <div class="p" id="p1"></div>
+      <div class="p" id="p2"></div>
+      <div class="p" id="p3"></div>
+      <div class="p" id="p4"></div>
+      <div class="p" id="p5"></div>
+    </div>
 
-      <!-- STEP 0 -->
-      <section id="step0">
-        <h2 class="step-title">¿Listo para jugar la demo?</h2>
-        <p class="step-desc">
-          Responde 3 preguntas rápidas y mira cómo el motor recomienda productos y explica el porqué.
-        </p>
-        <div class="grid two">
-          <button class="primary" onclick="go(1)">Iniciar</button>
-          <button class="ghost" onclick="loadExample()">Cargar caso de ejemplo</button>
-        </div>
-        <p class="footer-note">Tip: esta web funciona perfecto para escanear con QR en el demo room.</p>
-      </section>
+    <div class="stage">
 
-      <!-- STEP 1 -->
-      <section id="step1" class="hidden">
-        <h2 class="step-title">Paso 1/4 – Selecciona género</h2>
-        <p class="step-desc">Esto solo sirve para personalizar el estilo/portafolio (ajústalo a tu lógica real).</p>
-        <div class="grid two">
-          <button class="choice" onclick="pick('genero','HOMBRE'); go(2)">
-            <div class="icon">👔</div>
-            <div>
-              <h3>Hombre</h3>
-              <p>Recomendaciones con catálogo masculino.</p>
-              <div class="pillrow"><span class="pill">Rápido</span><span class="pill">Directo</span></div>
-            </div>
-          </button>
-          <button class="choice" onclick="pick('genero','MUJER'); go(2)">
-            <div class="icon">👗</div>
-            <div>
-              <h3>Mujer</h3>
-              <p>Recomendaciones con catálogo femenino.</p>
-              <div class="pillrow"><span class="pill">Estilo</span><span class="pill">Variedad</span></div>
-            </div>
-          </button>
-        </div>
-      </section>
-
-      <!-- STEP 2 -->
-      <section id="step2" class="hidden">
-        <h2 class="step-title">Paso 2/4 – Selecciona área</h2>
-        <p class="step-desc">Elige el “contexto” para disparar una recomendación distinta.</p>
-        <div class="grid three">
-          <button class="choice" onclick="pick('area','COCINA'); go(3)">
-            <div class="icon">🍳</div>
-            <div>
-              <h3>Cocina</h3>
-              <p>Paquetes y artículos para mejorar cocina.</p>
-              <div class="pillrow"><span class="pill">Funcional</span></div>
-            </div>
-          </button>
-          <button class="choice" onclick="pick('area','SALA'); go(3)">
-            <div class="icon">🛋️</div>
-            <div>
-              <h3>Sala</h3>
-              <p>Opciones para comodidad/estética.</p>
-              <div class="pillrow"><span class="pill">Confort</span></div>
-            </div>
-          </button>
-          <button class="choice" onclick="pick('area','FACHADA'); go(3)">
-            <div class="icon">🏠</div>
-            <div>
-              <h3>Fachada</h3>
-              <p>Mejoras visuales y protección exterior.</p>
-              <div class="pillrow"><span class="pill">Impacto</span></div>
-            </div>
-          </button>
-        </div>
-      </section>
-
-      <!-- STEP 3 -->
-      <section id="step3" class="hidden">
-        <h2 class="step-title">Paso 3/4 – Selecciona ambiente</h2>
-        <p class="step-desc">Simula el “estilo” del cliente (opción 1 vs opción 2).</p>
-        <div class="grid two">
-          <button class="choice" onclick="pick('ambiente','OPCION_1'); go(4)">
-            <div class="icon">①</div>
-            <div>
-              <h3>Opción 1</h3>
-              <p>Preferencia por un estilo específico.</p>
-              <div class="pillrow"><span class="pill">Clásico</span><span class="pill">Equilibrado</span></div>
-            </div>
-          </button>
-          <button class="choice" onclick="pick('ambiente','OPCION_2'); go(4)">
-            <div class="icon">②</div>
-            <div>
-              <h3>Opción 2</h3>
-              <p>Preferencia por un estilo alternativo.</p>
-              <div class="pillrow"><span class="pill">Moderno</span><span class="pill">Audaz</span></div>
-            </div>
-          </button>
-        </div>
-      </section>
-
-      <!-- STEP 4 -->
-      <section id="step4" class="hidden">
-        <h2 class="step-title">Extra – ¿También quieres otra recomendación?</h2>
-        <p class="step-desc">Aquí muestras cross-sell (como en tus slides: “también quiero…”).</p>
-        <div class="grid three">
-          <button class="choice" onclick="pick('extra','NINGUNA'); showResult()">
-            <div class="icon">✅</div>
-            <div><h3>No, gracias</h3><p>Ir al resultado final.</p></div>
-          </button>
-          <button class="choice" onclick="pick('extra','COCINA'); showResult()">
-            <div class="icon">🍳</div>
-            <div><h3>También Cocina</h3><p>Agregar recomendación adicional.</p></div>
-          </button>
-          <button class="choice" onclick="pick('extra','SALA'); showResult()">
-            <div class="icon">🛋️</div>
-            <div><h3>También Sala</h3><p>Agregar recomendación adicional.</p></div>
-          </button>
-        </div>
-      </section>
-
-      <!-- RESULT -->
-      <section id="result" class="hidden">
-        <div class="row">
-          <div>
-            <h2 class="step-title">Resultado – Recomendación</h2>
-            <p class="step-desc" id="summary"></p>
-          </div>
-          <button class="ghost" onclick="go(2)">Cambiar área</button>
-        </div>
-
-        <div class="result-grid">
-          <div>
-            <div class="grid">
-              <div class="prod">
-                <div class="thumb" aria-hidden="true"></div>
-                <div>
-                  <h4 id="p1name">Producto 1</h4>
-                  <small id="p1tag">Mejor match</small>
-                </div>
-                <div class="price" id="p1price">$—</div>
-              </div>
-              <div class="prod">
-                <div class="thumb" aria-hidden="true"></div>
-                <div>
-                  <h4 id="p2name">Producto 2</h4>
-                  <small id="p2tag">Mejor precio</small>
-                </div>
-                <div class="price" id="p2price">$—</div>
-              </div>
-              <div class="prod">
-                <div class="thumb" aria-hidden="true"></div>
-                <div>
-                  <h4 id="p3name">Producto 3</h4>
-                  <small id="p3tag">Tendencia</small>
-                </div>
-                <div class="price" id="p3price">$—</div>
-              </div>
-            </div>
-
-            <div class="card" style="margin-top:14px;">
-              <h3 style="margin:0 0 8px;">Ajustes rápidos</h3>
-              <div class="grid three">
-                <button onclick="tweak('barato')">Más barato</button>
-                <button onclick="tweak('premium')">Más premium</button>
-                <button onclick="tweak('novedad')">Más nuevo</button>
-              </div>
-              <div class="footer-note">Estos ajustes simulan re-ranking. Luego lo conectas a tu motor real.</div>
+      <!-- SLIDE 0 -->
+      <section class="slide active" id="s0">
+        <div class="slideLayout">
+          <h2 class="slideTitle">Inicia la demo</h2>
+          <div class="resultBox">
+            <div class="muted">
+              Estructura esperada:
+              <br><code>index.html</code>
+              <br><code>assets/Hombre.png</code> • <code>assets/Mujer.png</code>
+              <br><code>assets/cocina1.jpg</code> • <code>assets/cocina1_new.png</code> (etc.)
             </div>
           </div>
 
-          <div class="card">
-            <h3 style="margin:0 0 8px;">¿Por qué estas recomendaciones?</h3>
-            <ul class="why" id="reasons"></ul>
+          <div class="hotbar">
+            <button class="primary" onclick="go('s1')">Iniciar</button>
+            <button class="ghost" onclick="loadExample()">Cargar ejemplo</button>
+          </div>
+        </div>
+      </section>
 
-            <div style="margin-top:16px;">
-              <label for="phone">WhatsApp (opcional para demo):</label>
-              <input id="phone" type="text" placeholder="Ej: 573001234567 (sin + ni espacios)" />
-              <div class="grid two" style="margin-top:10px;">
-                <button class="primary" onclick="openWhatsApp()">Enviar por WhatsApp</button>
-                <button class="ghost" onclick="copyWhatsAppText()">Copiar mensaje</button>
-              </div>
-              <p class="footer-note">
-                Consejo demo: usa tu número o el de un voluntario para mostrar el “mensaje listo”.
-              </p>
+      <!-- SLIDE 1: GÉNERO -->
+      <section class="slide" id="s1">
+        <div class="slideLayout">
+          <h2 class="slideTitle">Selecciona tu género</h2>
+
+          <div class="imgGrid2">
+            <button class="imgChoice" onclick="pick('genero','Hombre'); go('s2')">
+              <img src="./assets/Hombre.png" alt="Hombre">
+            </button>
+
+            <button class="imgChoice" onclick="pick('genero','Mujer'); go('s2')">
+              <img src="./assets/Mujer.png" alt="Mujer">
+            </button>
+          </div>
+
+          <div class="hotbar">
+            <button class="ghost" onclick="go('s0')">Volver</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 2: ÁREA -->
+      <section class="slide" id="s2">
+        <div class="slideLayout">
+          <h2 class="slideTitle">Selecciona el área</h2>
+
+          <div class="hotbar" style="margin-top:24px">
+            <button class="primary" onclick="pick('area','Cocina'); go('s3c')">Cocina</button>
+            <button class="primary" onclick="pick('area','Sala'); go('s3s')">Sala</button>
+            <button class="primary" onclick="pick('area','Fachada'); go('s3f')">Fachada</button>
+          </div>
+
+          <div class="hotbar">
+            <button class="ghost" onclick="go('s1')">Volver</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 3C: COCINA -->
+      <section class="slide" id="s3c">
+        <div class="slideLayout">
+          <h2 class="slideTitle">Selecciona tu cocina</h2>
+
+          <div class="imgGrid2">
+            <button class="imgChoice" onclick="pick('opcion','cocina1'); go('s4')">
+              <img src="./assets/cocina1.jpg" alt="cocina1">
+            </button>
+
+            <button class="imgChoice" onclick="pick('opcion','cocina2'); go('s4')">
+              <img src="./assets/cocina2.jpg" alt="cocina2">
+            </button>
+          </div>
+
+          <div class="hotbar">
+            <button class="ghost" onclick="go('s2')">Volver</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 3S: SALA -->
+      <section class="slide" id="s3s">
+        <div class="slideLayout">
+          <h2 class="slideTitle">Selecciona tu sala</h2>
+
+          <div class="imgGrid2">
+            <button class="imgChoice" onclick="pick('opcion','sala1'); go('s4')">
+              <img src="./assets/sala1.png" alt="sala1">
+            </button>
+
+            <button class="imgChoice" onclick="pick('opcion','sala2'); go('s4')">
+              <img src="./assets/sala2.png" alt="sala2">
+            </button>
+          </div>
+
+          <div class="hotbar">
+            <button class="ghost" onclick="go('s2')">Volver</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 3F: FACHADA -->
+      <section class="slide" id="s3f">
+        <div class="slideLayout">
+          <h2 class="slideTitle">Selecciona tu fachada</h2>
+
+          <div class="imgGrid2">
+            <button class="imgChoice" onclick="pick('opcion','fachada1'); go('s4')">
+              <img src="./assets/fachada1.png" alt="fachada1">
+            </button>
+
+            <button class="imgChoice" onclick="pick('opcion','fachada2'); go('s4')">
+              <img src="./assets/fachada2.png" alt="fachada2">
+            </button>
+          </div>
+
+          <div class="hotbar">
+            <button class="ghost" onclick="go('s2')">Volver</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 4: RESULTADO -->
+      <section class="slide" id="s4">
+        <div class="slideLayout">
+          <h2 class="slideTitle">Recomendación</h2>
+
+          <div class="resultBox">
+            <div class="muted" id="summary">—</div>
+
+            <div style="margin-top:16px; text-align:center;">
+              <img id="resultImg" src="" alt="Resultado"
+                   style="width:min(980px, 92vw); height:auto; border-radius:10px; box-shadow:0 10px 26px rgba(0,0,0,.18);">
             </div>
 
-            <p class="footer-note">
-              ¿Quieres que esto muestre tu catálogo real? Conectamos un JSON/Excel/BD y listo.
-            </p>
+            <div class="muted" style="margin-top:10px;">
+              Se carga automáticamente el “después” (archivo *_new) según tu elección.
+            </div>
+          </div>
+
+          <div class="hotbar">
+            <button class="ghost" onclick="backToAreaSelection()">Cambiar elección</button>
           </div>
         </div>
       </section>
@@ -330,220 +288,117 @@
     </div>
   </div>
 
-<script>
-  const state = { genero:null, area:null, ambiente:null, extra:null, tweak:null };
+  <script>
+    const state = { genero:null, area:null, opcion:null };
 
-  function go(step){
-    const ids = ["step0","step1","step2","step3","step4","result"];
-    ids.forEach(id => document.getElementById(id).classList.add("hidden"));
-    const map = {0:"step0",1:"step1",2:"step2",3:"step3",4:"step4",5:"result"};
-    document.getElementById(map[step]).classList.remove("hidden");
-    setDots(step);
-    syncUrl();
-  }
-
-  function setDots(step){
-    // 1..4 steps + result
-    const dots = [dot1,dot2,dot3,dot4,dot5];
-    dots.forEach(d => d.classList.remove("on"));
-    if(step>=1) dot1.classList.add("on");
-    if(step>=2) dot2.classList.add("on");
-    if(step>=3) dot3.classList.add("on");
-    if(step>=4) dot4.classList.add("on");
-    if(step>=5) dot5.classList.add("on");
-  }
-
-  function pick(key,val){ state[key]=val; syncUrl(); }
-
-  function loadExample(){
-    state.genero="MUJER";
-    state.area="COCINA";
-    state.ambiente="OPCION_1";
-    state.extra="SALA";
-    showResult();
-  }
-
-  function showResult(){
-    if(!state.genero) return go(1);
-    if(!state.area) return go(2);
-    if(!state.ambiente) return go(3);
-    if(!state.extra) state.extra="NINGUNA";
-
-    // Productos mock (cámbialos por tu catálogo real)
-    const base = mockRecommend(state);
-    renderResult(base);
-    go(5);
-  }
-
-  function mockRecommend(s){
-    // Mini motor demo: ajusta nombres según "area" y "ambiente"
-    const catalog = {
-      COCINA: [
-        {name:"Estufa 4 puestos", price: 899900, tag:"Mejor match"},
-        {name:"Campana extractora", price: 459900, tag:"Mejor precio"},
-        {name:"Juego de grifería", price: 199900, tag:"Tendencia"}
-      ],
-      SALA: [
-        {name:"Sofá 3 puestos", price: 1299900, tag:"Mejor match"},
-        {name:"Mesa de centro", price: 299900, tag:"Mejor precio"},
-        {name:"Lámpara decorativa", price: 179900, tag:"Tendencia"}
-      ],
-      FACHADA: [
-        {name:"Pintura exterior premium", price: 349900, tag:"Mejor match"},
-        {name:"Reflectores LED", price: 129900, tag:"Mejor precio"},
-        {name:"Revestimiento decorativo", price: 599900, tag:"Tendencia"}
-      ]
+    // Mapa exacto: opción -> archivo resultado (con extensión correcta)
+    const RESULT_MAP = {
+      cocina1:  "./assets/cocina1_new.png",
+      cocina2:  "./assets/cocina2_new.png",
+      sala1:    "./assets/sala1_new.jpg",
+      sala2:    "./assets/sala2_new.jpg",
+      fachada1: "./assets/fachada1_new.png",
+      fachada2: "./assets/fachada2_new.png"
     };
 
-    let items = JSON.parse(JSON.stringify(catalog[s.area]));
-    // ambiente modifica el orden (simulado)
-    if(s.ambiente === "OPCION_2"){
-      items = [items[2], items[0], items[1]];
-      items[0].tag = "Mejor match";
-      items[1].tag = "Tendencia";
-      items[2].tag = "Mejor precio";
+    function showSlide(id){
+      document.querySelectorAll(".slide").forEach(s => s.classList.remove("active"));
+      const el = document.getElementById(id);
+      if(el) el.classList.add("active");
     }
 
-    // extra: agregamos una “nota” para la explicación
-    const reasons = [
-      `Coincide con la selección: ${s.genero} / ${s.area} / ${s.ambiente.replace("_"," ")}`,
-      `Se prioriza una opción que maximiza compatibilidad (match) y otra que optimiza precio.`,
-      (s.extra && s.extra !== "NINGUNA")
-        ? `Se detecta oportunidad de recomendación adicional en: ${s.extra}.`
-        : `Sin recomendación adicional (el cliente prioriza una sola área).`
-    ];
-
-    return { items, reasons };
-  }
-
-  function tweak(mode){
-    state.tweak = mode;
-    // Reordena precios simulando preferencia
-    const base = mockRecommend(state);
-    if(mode === "barato"){
-      base.items.sort((a,b)=> a.price-b.price);
-      base.items[0].tag="Mejor precio";
-      base.items[1].tag="Mejor match";
-      base.items[2].tag="Alternativa";
-      base.reasons.unshift("Ajuste aplicado: preferencia por precio.");
+    function setProgress(step){
+      [p1,p2,p3,p4,p5].forEach(b => b.classList.remove("on"));
+      if(step>=1) p1.classList.add("on");
+      if(step>=2) p2.classList.add("on");
+      if(step>=3) p3.classList.add("on");
+      if(step>=4) p4.classList.add("on");
+      if(step>=5) p5.classList.add("on");
     }
-    if(mode === "premium"){
-      base.items.sort((a,b)=> b.price-a.price);
-      base.items[0].tag="Más premium";
-      base.items[1].tag="Mejor match";
-      base.items[2].tag="Alternativa";
-      base.reasons.unshift("Ajuste aplicado: preferencia por calidad/premium.");
+
+    function go(id){
+      const mapStep = { s0:0, s1:1, s2:2, s3c:3, s3s:3, s3f:3, s4:5 };
+      setProgress(mapStep[id] ?? 0);
+      showSlide(id);
+      syncUrl();
+      if(id === "s4") renderResult();
     }
-    if(mode === "novedad"){
-      // solo cambia tags para simular
-      base.items[0].tag="Tendencia";
-      base.items[1].tag="Nuevo";
-      base.items[2].tag="Alternativa";
-      base.reasons.unshift("Ajuste aplicado: preferencia por novedad.");
+
+    function pick(key, value){
+      state[key] = value;
+      syncUrl();
     }
-    renderResult(base);
-    syncUrl();
-  }
 
-  function renderResult(data){
-    const fmt = n => "$" + n.toLocaleString("es-CO");
-    const [p1,p2,p3] = data.items;
+    function backToAreaSelection(){
+      if(state.area === "Cocina") return go("s3c");
+      if(state.area === "Sala") return go("s3s");
+      if(state.area === "Fachada") return go("s3f");
+      return go("s2");
+    }
 
-    document.getElementById("p1name").textContent = p1.name;
-    document.getElementById("p1price").textContent = fmt(p1.price);
-    document.getElementById("p1tag").textContent = p1.tag;
+    function loadExample(){
+      state.genero = "Mujer";
+      state.area = "Cocina";
+      state.opcion = "cocina1";
+      go("s4");
+    }
 
-    document.getElementById("p2name").textContent = p2.name;
-    document.getElementById("p2price").textContent = fmt(p2.price);
-    document.getElementById("p2tag").textContent = p2.tag;
+    function renderResult(){
+      const summary = document.getElementById("summary");
+      const resultImg = document.getElementById("resultImg");
 
-    document.getElementById("p3name").textContent = p3.name;
-    document.getElementById("p3price").textContent = fmt(p3.price);
-    document.getElementById("p3tag").textContent = p3.tag;
+      summary.textContent = `Selección: ${state.genero || "—"} • ${state.area || "—"} • ${state.opcion || "—"}`;
 
-    const s = `Selección: ${state.genero} • ${state.area} • ${state.ambiente.replace("_"," ")} • Extra: ${state.extra}`;
-    document.getElementById("summary").textContent = s;
+      const path = RESULT_MAP[state.opcion];
+      if(!path){
+        resultImg.src = "";
+        return;
+      }
+      resultImg.src = path;
+    }
 
-    const ul = document.getElementById("reasons");
-    ul.innerHTML = "";
-    data.reasons.forEach(r=>{
-      const li = document.createElement("li");
-      li.textContent = r;
-      ul.appendChild(li);
+    function syncUrl(){
+      const params = new URLSearchParams();
+      Object.entries(state).forEach(([k,v]) => { if(v) params.set(k,v); });
+      history.replaceState(null,"",`${location.pathname}?${params.toString()}`);
+    }
+
+    function readUrl(){
+      const p = new URLSearchParams(location.search);
+      ["genero","area","opcion"].forEach(k => {
+        const v = p.get(k);
+        if(v) state[k] = v;
+      });
+    }
+
+    async function copyShareLink(){
+      try{
+        await navigator.clipboard.writeText(location.href);
+        alert("Link copiado ✅");
+      }catch(e){
+        alert("No se pudo copiar el link.");
+      }
+    }
+
+    document.getElementById("btnReset").addEventListener("click", () => {
+      state.genero = null; state.area = null; state.opcion = null;
+      syncUrl();
+      go("s0");
     });
-  }
 
-  function buildMessage(){
-    const summary = `Hola 👋. Demo recomendador:\n` +
-      `Cliente: ${state.genero}\n` +
-      `Área: ${state.area}\n` +
-      `Ambiente: ${state.ambiente.replace("_"," ")}\n` +
-      `Extra: ${state.extra}\n\n` +
-      `Me interesa recibir la cotización / piloto.`;
-    return summary;
-  }
+    document.getElementById("btnShare").addEventListener("click", copyShareLink);
 
-  function openWhatsApp(){
-    const phone = document.getElementById("phone").value.trim();
-    const text = encodeURIComponent(buildMessage());
-    const url = phone
-      ? `https://wa.me/${phone}?text=${text}`
-      : `https://wa.me/?text=${text}`;
-    window.open(url, "_blank");
-  }
-
-  async function copyWhatsAppText(){
-    try{
-      await navigator.clipboard.writeText(buildMessage());
-      alert("Mensaje copiado ✅");
-    }catch(e){
-      alert("No se pudo copiar. Selecciona y copia manualmente.");
+    // init
+    readUrl();
+    if(state.genero && state.area && state.opcion){
+      go("s4");
+    }else if(state.genero && state.area){
+      backToAreaSelection();
+    }else if(state.genero){
+      go("s2");
+    }else{
+      go("s0");
     }
-  }
-
-  function syncUrl(){
-    const params = new URLSearchParams();
-    Object.entries(state).forEach(([k,v]) => { if(v) params.set(k,v); });
-    const newUrl = `${location.pathname}?${params.toString()}`;
-    history.replaceState(null,"",newUrl);
-  }
-
-  function readUrl(){
-    const p = new URLSearchParams(location.search);
-    ["genero","area","ambiente","extra","tweak"].forEach(k=>{
-      const v = p.get(k);
-      if(v) state[k]=v;
-    });
-  }
-
-  async function copyShareLink(){
-    const link = location.href;
-    try{
-      await navigator.clipboard.writeText(link);
-      alert("Link copiado ✅ (pégalo en un QR o compártelo)");
-    }catch(e){
-      alert("No se pudo copiar el link.");
-    }
-  }
-
-  document.getElementById("btnReset").addEventListener("click", ()=>{
-    Object.keys(state).forEach(k=> state[k]=null);
-    document.getElementById("phone").value = "";
-    syncUrl();
-    go(0);
-  });
-
-  document.getElementById("btnShare").addEventListener("click", copyShareLink);
-
-  // init
-  readUrl();
-  if(state.genero && state.area && state.ambiente){
-    showResult();
-  }else if(state.genero){
-    go(2);
-  }else{
-    go(0);
-  }
-</script>
+  </script>
 </body>
 </html>
